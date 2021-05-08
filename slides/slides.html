@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Final Project Presentation</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Diana Sánchez" />
+    <meta name="date" content="2021-04-29" />
+    <script src="libs/header-attrs-2.7/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/rutgers.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/rutgers-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Final Project Presentation
+### Diana Sánchez
+### Rutgers University<br/>Department of Spanish and Portuguese
+### April 29, 2021
+
+---
+
+
+
+class: center, middle
+
+#.red[Welcome]
+
+email| ds1731@rutgers.edu
+---
+&lt;img src="https://i.pinimg.com/originals/4c/78/65/4c78654be43dc14f7509346806361a68.png" width="150px" style="display: block; margin: auto 0 auto auto;" /&gt;
+
+
+# Article Summary
+
+***Article Title:*** The ontogeny of visual-motor memory and its important in handwriting and reading: a developing construct
+
+***Authors:*** Amanda H. Waterman, Jelena Havelka, Peter R. Culmer, Liam J.B. Hill and Mark Mon-Williams
+
+
+
+You can find this article [here](https://royalsocietypublishing.org/doi/pdf/10.1098/rspb.2014.0896).
+
+You can find the data [here](https://datadryad.org/stash/dataset/doi:10.5061/dryad.t3g5j).
+---
+&lt;img src="https://i.pinimg.com/originals/4c/78/65/4c78654be43dc14f7509346806361a68.png" width="150px" style="display: block; margin: auto 0 auto auto;" /&gt;
+# Key Points
+
+* Waterman et al.(2014) indicated that the ability to recall visual patterns and execute them on paper (e.g., writing) could indicate one's cognitive strength or ***visual motor memory (VMM)***.
+
+* The data explored seeks to determine if the ability of VMM promotes writing and if it impacts reading.
+
+---
+&lt;img src="https://i.pinimg.com/originals/4c/78/65/4c78654be43dc14f7509346806361a68.png" width="150px" style="display: block; margin: auto 0 auto auto;" /&gt;
+# Method
+
+* used tablet and stylus
+* software tracked and measured complex drawings
+* presented with a drawing for 3 seconds and then asked to draw shape
+
+
+&lt;img src="https://kgeovanni.github.io/final_project/images/figure1.png" width="500px" style="display: block; margin: auto 0 auto auto;" /&gt;
+
+---
+&lt;img src="https://i.pinimg.com/originals/4c/78/65/4c78654be43dc14f7509346806361a68.png" width="150px" style="display: block; margin: auto 0 auto auto;" /&gt;
+# Data available
+Some of the raw data available consisted of the following items (24):
+
+|Participant Info    |   Academic Levels   |   Tasks   |   Average
+|:-------------------|---------------------|-----------|-----------
+|87 children | reading level | shape 1, 2 | average shape simple
+|school grade | reading level converted | Shape 3, 4 | average shape medium
+|dominant hand | writing level | shape 5, 6 | average shape hard
+|sex and age | writing level converted | shape 7, 8, 9 |
+
+* OE-Optimized Error value for accurately copying task. Measure of VMM.
+
+&lt;img src="https://kgeovanni.github.io/final_project/images/head_data_raw.png" width="1000px" /&gt;
+
+&lt;img src="https://kgeovanni.github.io/final_project/images/head_data_raw2.png" width="1000px" /&gt;
+
+---
+&lt;img src="https://i.pinimg.com/originals/4c/78/65/4c78654be43dc14f7509346806361a68.png" width="150px" style="display: block; margin: auto 0 auto auto;" /&gt;
+
+# Tidy the Data: _data_tidy_
+
+* columns removed: ***select()***
+  * reading and writing levels
+  * 10 individual drawings
+  * hand dominance
+
+&lt;img src="https://kgeovanni.github.io/final_project/images/data_tidy.png" width="1200px" /&gt;
+---
+&lt;img src="https://i.pinimg.com/originals/4c/78/65/4c78654be43dc14f7509346806361a68.png" width="150px" style="display: block; margin: auto 0 auto auto;" /&gt;
+
+# Tidy the Data: _data_longer_
+
+* Longer datasets: ***pivot_longer()*** and ***mutate()***
+  * decreased number of columns (shape1 to shape9)
+  
+&lt;img src="https://kgeovanni.github.io/final_project/images/data_longer.png" width="1200px" /&gt;
+
+---
+&lt;img src="https://i.pinimg.com/originals/4c/78/65/4c78654be43dc14f7509346806361a68.png" width="150px" style="display: block; margin: auto 0 auto auto;" /&gt;
+
+# Boxplot: OE Average Performance of Complex Shapes
+.pull-left[
+&lt;img src="https://kgeovanni.github.io/final_project/images/boxplot_OEsimple.png" width="300px" /&gt;
+
+&lt;img src="https://kgeovanni.github.io/final_project/images/boxplot_OEmedium.png" width="300px" /&gt;
+]
+.pull-right[
+&lt;img src="https://kgeovanni.github.io/final_project/images/boxplot_OEhard.png" width="600px" /&gt;
+]
+---
+&lt;img src="https://i.pinimg.com/originals/4c/78/65/4c78654be43dc14f7509346806361a68.png" width="150px" style="display: block; margin: auto 0 auto auto;" /&gt;
+
+# Boxplot with Facet: Gender Performance
+
+&lt;img src="https://kgeovanni.github.io/final_project/images/facet.png" width="600px" style="display: block; margin: auto;" /&gt;
+---
+
+&lt;img src="https://i.pinimg.com/originals/4c/78/65/4c78654be43dc14f7509346806361a68.png" width="150px" style="display: block; margin: auto 0 auto auto;" /&gt;
+# Learning Curve with Open Data
+
+* Data is not always accurate
+
+--
+* All information may not be disclosed
+
+--
+* Some data is for PC users only
+
+--
+* Contact authors if needed
+
+---
+&lt;img src="https://i.pinimg.com/originals/4c/78/65/4c78654be43dc14f7509346806361a68.png" width="150px" style="display: block; margin: auto 0 auto auto;" /&gt;
+# References
+
+Waterman, A. H., Havelka, J., Culmer, P. R., Hill, L. J., &amp; Mon-Williams, M. (2015). _The ontogeny of visual–motor memory and its importance in handwriting and reading: a developing construct._ Proceedings of the Royal Society B: Biological Sciences, 282(1798), 20140896.
+
+---
+class: center, middle
+
+&lt;img src="https://nadc.org.uk/wp-content/uploads/2020/04/Thankyou.jpg" width="60%" /&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

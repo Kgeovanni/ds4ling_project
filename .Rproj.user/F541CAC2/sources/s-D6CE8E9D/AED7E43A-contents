@@ -1,0 +1,195 @@
+---
+title: "Final Project: Visual Motor Memory and its importance in handwriting and reading"
+author: "Diana Sanchez"
+date: "May 10, 2021"
+output: html_document
+---
+
+
+### Set-Up:
+```{r}
+library(tidyverse)
+library(lme4)
+library(knitr)
+library(kableExtra)
+library(patchwork)
+library(dplyr)
+library(lme4)
+library(readr)
+```
+
+### Article Introduction 
+***The ontogeny of visual-motor memory and its importance in handwriting and reading: a developing construct***
+
+Waterman, Havelka, Culmer, Hill, and Mon-Williams (2015) conducted a cross-sectional study to examine if working motor memory interacted with writing ability and reading skills. They shared their data as an open source.
+
+
+### Dataset Loaded and Explored
+The raw data available in csv format was loaded and explored. 
+```{r, load_data}
+data_raw <- read_csv("data_raw/data_raw.csv")
+View(data_raw)
+summary(data_raw)
+```
+
+The first six rows of data_raw, provided by the authors is shown in the table below. 
+```{r, summary}
+head(data_raw) %>% 
+  kbl(caption = "First Six Rows of Raw Data") %>% 
+  kable_classic(full_width = F, html_font = "Cambria")
+```
+
+### Tidy Data
+Data was organized using pivot_longer(). Columns in the raw data set were separated by names and values.
+```{r, data_longer}
+data_longer <- data_raw %>%
+  pivot_longer(
+    cols = Shape1_OE:Shape9_OE, 
+    names_to = "shape", 
+    values_to = "OE"
+  ) %>%
+  mutate(shape = factor(parse_number(shape))) %>%  
+  select(ID, YearGroup_School, Sex, Age_Cat, Reading_converted, 
+         Writing_converted, shape, OE)
+
+head(data_longer) %>% 
+  kbl(caption = "Tidy Data with pivot_longer()") %>% 
+  kable_classic(full_width = F, html_font = "Cambria")
+```
+Data was organized using select(). Specific Columns from raw data set were selected.
+```{r, data_tidy}
+data_tidy <- data_raw %>% 
+  select(ID, YearGroup_School, Sex, Age_Cat, Reading_converted, 
+         Writing_converted, OE_avg_simple, OE_avg_medium, OE_avg_hard,OE_avg_overall)
+
+head(data_tidy) %>% 
+  kbl(caption = "Tidy Data with select()") %>% 
+  kable_classic(full_width = F, html_font = "Cambria")
+```
+
+### Plot the Data
+#### Scatter Plots
+Initial thought was to use a scatter plot to compare age and OE variables, however, age is not a continuous variable and boxplots appeared to be more appropriate. Below are examples of initial exploration plots.
+
+```{r, plot}
+  data_tidy %>% 
+  ggplot(aes(x = Age_Cat, y = OE_avg_simple, color = Sex)) +
+  geom_point() +
+  xlab("Age Groups") +
+  ylab("OE Measurement for Simple Shapes") +
+  ggtitle("Age and Average OE for Simple Shapes ")
+```
+```{r, }
+data_tidy %>% 
+  ggplot(aes(x = Sex, y = OE_avg_hard)) +
+  geom_jitter(alpha = 0.4, width = 0.2) +
+  xlab("Sex") +
+  ylab("OE Measurement for Hard Shapes") +
+  ggtitle("Age and Average OE for Hard Shapes ")
+```
+
+
+#### Boxplots
+In the boxplot below we can conclude that about 25% of our OE data has a value less than 3, our median value is about 4.5, and 75% of our data is less than 7. There are many data points (i.e., outliers) above 11 and that data has a positive skew.
+```{r}
+boxplot(data_longer$OE)
+```
+Boxplots for age group and simple shapes.
+```{r, boxplot_OEsimple}
+data_tidy %>% 
+  ggplot(aes(x = Age_Cat, y = OE_avg_simple)) +
+  geom_boxplot() +
+  ggtitle("Average OE of Simple Shapes")
+```
+Boxplots for age group and medium shapes.
+```{r, boxplot_OEmedium}
+data_tidy %>% 
+  ggplot(aes(x = Age_Cat, y = OE_avg_medium)) +
+  geom_boxplot() +
+  ggtitle("Average OE of Medium Shapes")
+```
+
+Boxplots for age group and hard shapes.
+```{r, boxplot_OEhard}
+data_tidy %>% 
+  ggplot(aes(x = Age_Cat, y = OE_avg_hard)) +
+  geom_boxplot() +
+  ggtitle("Average OE of Hard Shapes")
+```
+
+
+
+***Facet*** analysis is used below to look at the relationship between different variables (i.e., sex and OE performance of the nine shapes).
+```{r, facet}
+data_longer %>% 
+  ggplot(aes(x = Sex, y = OE)) +
+  geom_boxplot() +
+  facet_wrap(vars(shape)) +
+  ggtitle("Gender Performance of Optimized Error (OE) Across Nine Shapes") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r}
+data_longer %>% 
+  ggplot(aes(x = shape, y = OE)) +
+  geom_boxplot() +
+  facet_wrap(vars(Sex)) +
+  ggtitle("Gender Performance of Optimized Error (OE) Across Nine Shapes")
+```
+### Data Description Analyses
+
+#### 
+```{r}
+Gender_OE <- aov(OE~Sex + shape, data = data_longer)
+```
+
+
+```{r}
+summary(Gender_OE)
+```
+
+A Tukey's HSD test was used after an ANOVA test to compare which groups' means are different; essentially comparing all possible pairs of means.
+```{r}
+TukeyHSD(Gender_OE) #we need a post hoc test to compare groups
+```
+
+
+#### Data Description Analysis for Sex (Female and Male)
+Male and Female performance for the average score of the three-level (simple, medium, hard) shape complexity waere analyzed. 
+```{r, OE_summarize}
+data_description <- data_raw %>% 
+  group_by(Sex) %>% 
+   summarize(MeanOE_simple = mean(OE_avg_simple),
+            sdOE_simple = sd(OE_avg_simple),
+            MeanOE_medium = mean(OE_avg_medium),
+            sdOE_medium = sd(OE_avg_medium),
+            MeanOE_hard = mean(OE_avg_hard),
+            sdOE_hard = sd(OE_avg_hard))
+
+data_description %>% 
+ kbl(caption = "Gender Comparison of Optimized Error (OE) for Visual Motor Memory (VMM)") %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+```
+
+#### Data Description Analysis 
+A linear regression model was completed to fit models
+```{r}
+sex_OEhard<-lm(OE_avg_hard~Sex, data = data_tidy)
+```
+t-test used to determine significant difference between groups.
+```{r}
+t.test(OE_avg_hard~Sex, data = data_tidy)
+```
+
+```{r}
+summary(aov(sex_OEhard))
+summary(sex_OEhard)
+```
+
+### Histogram Analysis
+Data frame residuals is extracted from sex_OEhard. Model is skewed left.
+```{r}
+hist(sex_OEhard$residuals)
+```
+
+

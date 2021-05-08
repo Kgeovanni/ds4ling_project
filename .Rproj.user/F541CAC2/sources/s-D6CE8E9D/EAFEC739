@@ -1,0 +1,28 @@
+{
+    "id": "EAFEC739",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1620447613472.0,
+    "source_on_save": false,
+    "relative_order": 13,
+    "properties": {
+        "id": "b82e9bafd1f04aa79f4b5da7dc6d2d3d",
+        "name": "sex_OEhard",
+        "title": "sex_OEhard",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 4521660582,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1620447613472,
+    "read_only": false,
+    "read_only_alternatives": []
+}

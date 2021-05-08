@@ -1,0 +1,6 @@
+"0","data_longer %>% "
+"0","  ggplot(aes(x = Sex, y = OE)) +"
+"0","  geom_boxplot() +"
+"0","  facet_wrap(vars(shape)) +"
+"0","  ggtitle(""Gender Performance of OE"") +"
+"0","  theme(plot.title = element_text(hjust = 0.5))"

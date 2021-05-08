@@ -1,0 +1,6 @@
+"0","data_tidy %>% "
+"0","  ggplot(aes(x = Sex, y = OE_avg_hard)) +"
+"0","  geom_jitter(alpha = 0.4, width = 0.2) +"
+"0","  xlab(""Sex"") +"
+"0","  ylab(""OE Measurement for Hard Shapes"") +"
+"0","  ggtitle(""Age and Average OE for Hard Shapes "")"

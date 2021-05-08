@@ -1,0 +1,4 @@
+"0","data_tidy %>% "
+"0","   boxplot(Age_Cat)"
+"2","Error in boxplot.default(., Age_Cat) : object 'Age_Cat' not found
+"

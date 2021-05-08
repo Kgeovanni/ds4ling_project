@@ -1,0 +1,6 @@
+"0","  data_tidy %>% "
+"0","  ggplot(aes(x = Age_Cat, y = OE_avg_simple, color = Sex)) +"
+"0","  geom_point() +"
+"0","  xlab(""Age Groups"") +"
+"0","  ylab(""OE Measurement for Simple Shapes"") +"
+"0","  ggtitle(""Age and Average OE for Simple Shapes "")"

@@ -1,0 +1,28 @@
+{
+    "id": "CB18D4A3",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1620446329536.0,
+    "source_on_save": false,
+    "relative_order": 11,
+    "properties": {
+        "id": "a65632190370485fb84f517f3f8b16fb",
+        "name": "Gender_OE",
+        "title": "Gender_OE",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 140387779592776,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1620446329536,
+    "read_only": false,
+    "read_only_alternatives": []
+}

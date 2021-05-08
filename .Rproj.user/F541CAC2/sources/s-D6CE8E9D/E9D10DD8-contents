@@ -1,0 +1,71 @@
+---
+title             : "Final Project: Manuscript"
+shorttitle        : "Manuscript"
+
+author: 
+  - name          : "Diana Sanchez"
+    affiliation   : 
+    corresponding : yes    # Define only one corresponding author
+    address       : 
+    email         : 
+    role:         # Contributorship roles (e.g., CRediT, https://casrai.org/credit/)
+      - Conceptualization
+      - Writing - Original Draft Preparation
+      - Writing - Review & Editing
+
+    institution   : "Rutgers University"
+
+  
+keywords          : "keywords"
+wordcount         : "X"
+
+bibliography      : ["r-references.bib"]
+
+floatsintext      : no
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+linenumbers       : yes
+mask              : no
+draft             : no
+
+documentclass     : "apa6"
+classoption       : "man"
+output            : papaja::apa6_pdf
+---
+
+```{r setup, include = FALSE}
+library("papaja")
+r_refs("r-references.bib")
+```
+
+```{r analysis-preferences}
+# Seed for random number generation
+set.seed(42)
+knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
+```
+
+
+
+# Methods
+Waterman, Havelka, Culmer, Hill, and Mon-Williams (2015) conducted a cross-sectional study to examine if working motor memory interacted with writing ability and reading skills.
+
+## Participants
+Waterman et al. (2015) recruited 87 English speaking children from a primary school in the West Yorkshire. The participants attended school year two through six: 33 were from year two, 27 were from year four, and 27 were from year six. All participants were reported to be in good health, no visual concerns or neurological disorders.
+
+## Material
+A specialized program was used to present visual stimuli (i.e., shapes) while recording participant's drawing completed with a stylus. A table was used and the program measured the position and the rate of the complex figure that was drawn.
+
+## Procedure
+Participants were transitioned to a quiet room and seated at a table. The tablet was presented in landscape view and the stylus was place in front of participant. Participants received two practice trials and completed 18 trials independently. Participants were informed that they would view an image for three seconds and then be required to draw the same image after its disappearance. Participants were instructed to draw the complex shapes between the two dots and to draw from left to right.Baseline data for motor skills were measured prior to each main task via a copy task. The image stayed on the top half of the screen and participants were asked to copy it in the bottom half. Waterman et al. (2015) reported that reading and writing standard scores were provided by the school.
+
+In order to analyze results from this study, Waterman et al. (2015) calculated optimized error (OE) to  represent the ability to accurately reproduce the target shape, determined by evaluating the mean distance between the two points on the tablet. This was referred to as the reference path. OE is regarded as the measure of visual motor memory.
+
+# Results
+A mixed measure ANOVA was used to analyze age and the three complex shapes (simple, medium, hard). Results indicated main effects for the independent variable,age and a main effect of shape complexity. A post-hoc analyses was completed after the rejection of the null hypothesis indicating a difference in all age groups and all three-level shape complexity. The results between the main effects was considered to be statistically non-significant. 
+
+The authors completed a partial correlation analysis to examine interaction between two variables, VMM, writing, and reading, after controlling for age and baseline motor ability. Waterman et al. (2015) found a correlation of VMM with writing (r= -0.42, p<0.001) and reading (r= -0.32, p<0.01). Writing and reading were also correlated (r= 0.53, p<0.001).
+
+A regression analysis was conducted for writing as the dependent variable with variables: age, copying, and VMM. The results indicated that VMM can predict writing (B= -0.31, t87= -4.22, p< 0.001). Reading as a dependent variable was also analyzed using this method. Results were similar, indicating that VMM is a predictor (B= -0.21, t87= -3.10, p< 0.001) for reading. The authors conducted another regression analysis between writing and VMM and found that VMM did not interact with writing. Lastly, to determine if a variable carries the effect of an independent variable to the dependent variables the sobel test was completed and confirmed that the effect of VMM on reading via writing was significant (z= -3.39, p<0.001).
+
+**RStudio presented difficulties reading beta symbol. B=Beta

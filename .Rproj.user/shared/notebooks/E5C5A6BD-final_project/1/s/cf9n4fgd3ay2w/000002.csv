@@ -1,0 +1,3 @@
+"0","head(vmm) %>% "
+"0","  kbl(caption = ""First Six Rows of Raw Data"") %>% "
+"0","  kable_classic(full_width = F, html_font = ""Cambria"")"

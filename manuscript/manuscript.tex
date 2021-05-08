@@ -1,0 +1,180 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  english,
+  man]{apa6}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+  \usepackage{amssymb}
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Final Project: Manuscript},
+  pdfauthor={Diana Sanchez},
+  pdflang={en-EN},
+  pdfkeywords={keywords},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+% Manuscript styling
+\usepackage{upgreek}
+\captionsetup{font=singlespacing,justification=justified}
+
+% Table formatting
+\usepackage{longtable}
+\usepackage{lscape}
+% \usepackage[counterclockwise]{rotating}   % Landscape page setup for large tables
+\usepackage{multirow}		% Table styling
+\usepackage{tabularx}		% Control Column width
+\usepackage[flushleft]{threeparttable}	% Allows for three part tables with a specified notes section
+\usepackage{threeparttablex}            % Lets threeparttable work with longtable
+
+% Create new environments so endfloat can handle them
+% \newenvironment{ltable}
+%   {\begin{landscape}\begin{center}\begin{threeparttable}}
+%   {\end{threeparttable}\end{center}\end{landscape}}
+\newenvironment{lltable}{\begin{landscape}\begin{center}\begin{ThreePartTable}}{\end{ThreePartTable}\end{center}\end{landscape}}
+
+% Enables adjusting longtable caption width to table width
+% Solution found at http://golatex.de/longtable-mit-caption-so-breit-wie-die-tabelle-t15767.html
+\makeatletter
+\newcommand\LastLTentrywidth{1em}
+\newlength\longtablewidth
+\setlength{\longtablewidth}{1in}
+\newcommand{\getlongtablewidth}{\begingroup \ifcsname LT@\roman{LT@tables}\endcsname \global\longtablewidth=0pt \renewcommand{\LT@entry}[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}\@nameuse{LT@\roman{LT@tables}} \fi \endgroup}
+
+% \setlength{\parindent}{0.5in}
+% \setlength{\parskip}{0pt plus 0pt minus 0pt}
+
+% \usepackage{etoolbox}
+\makeatletter
+\patchcmd{\HyOrg@maketitle}
+  {\section{\normalfont\normalsize\abstractname}}
+  {\section*{\normalfont\normalsize\abstractname}}
+  {}{\typeout{Failed to patch abstract.}}
+\patchcmd{\HyOrg@maketitle}
+  {\section{\protect\normalfont{\@title}}}
+  {\section*{\protect\normalfont{\@title}}}
+  {}{\typeout{Failed to patch title.}}
+\makeatother
+\shorttitle{Manuscript}
+\keywords{keywords\newline\indent Word count: X}
+\DeclareDelayedFloatFlavor{ThreePartTable}{table}
+\DeclareDelayedFloatFlavor{lltable}{table}
+\DeclareDelayedFloatFlavor*{longtable}{table}
+\makeatletter
+\renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
+\makeatother
+\usepackage{lineno}
+
+\linenumbers
+\usepackage{csquotes}
+\ifxetex
+  % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[]{english}
+\else
+  \usepackage[shorthands=off,main=english]{babel}
+\fi
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Final Project: Manuscript}
+\author{Diana Sanchez\textsuperscript{}}
+\date{}
+
+
+\affiliation{\phantom{0}}
+
+\begin{document}
+\maketitle
+
+\hypertarget{methods}{%
+\section{Methods}\label{methods}}
+
+Waterman, Havelka, Culmer, Hill, and Mon-Williams (2015) conducted a cross-sectional study to examine if working motor memory interacted with writing ability and reading skills.
+
+\hypertarget{participants}{%
+\subsection{Participants}\label{participants}}
+
+Waterman et al.~(2015) recruited 87 English speaking children from a primary school in the West Yorkshire. The participants attended school year two through six: 33 were from year two, 27 were from year four, and 27 were from year six. All participants were reported to be in good health, no visual concerns or neurological disorders.
+
+\hypertarget{material}{%
+\subsection{Material}\label{material}}
+
+A specialized program was used to present visual stimuli (i.e., shapes) while recording participant's drawing completed with a stylus. A table was used and the program measured the position and the rate of the complex figure that was drawn.
+
+\hypertarget{procedure}{%
+\subsection{Procedure}\label{procedure}}
+
+Participants were transitioned to a quiet room and seated at a table. The tablet was presented in landscape view and the stylus was place in front of participant. Participants received two practice trials and completed 18 trials independently. Participants were informed that they would view an image for three seconds and then be required to draw the same image after its disappearance. Participants were instructed to draw the complex shapes between the two dots and to draw from left to right.Baseline data for motor skills were measured prior to each main task via a copy task. The image stayed on the top half of the screen and participants were asked to copy it in the bottom half. Waterman et al.~(2015) reported that reading and writing standard scores were provided by the school.
+
+In order to analyze results from this study, Waterman et al.~(2015) calculated optimized error (OE) to represent the ability to accurately reproduce the target shape, determined by evaluating the mean distance between the two points on the tablet. This was referred to as the reference path. OE is regarded as the measure of visual motor memory.
+
+\hypertarget{results}{%
+\section{Results}\label{results}}
+
+A mixed measure ANOVA was used to analyze age and the three complex shapes (simple, medium, hard). Results indicated main effects for the independent variable,age and a main effect of shape complexity. A post-hoc analyses was completed after the rejection of the null hypothesis indicating a difference in all age groups and all three-level shape complexity. The results between the main effects was considered to be statistically non-significant.
+
+The authors completed a partial correlation analysis to examine interaction between two variables, VMM, writing, and reading, after controlling for age and baseline motor ability. Waterman et al.~(2015) found a correlation of VMM with writing (r= -0.42, p\textless0.001) and reading (r= -0.32, p\textless0.01). Writing and reading were also correlated (r= 0.53, p\textless0.001).
+
+A regression analysis was conducted for writing as the dependent variable with variables: age, copying, and VMM. The results indicated that VMM can predict writing (\(\beta\) = -0.31, t87= -4.22, p\textless{} 0.001). Reading as a dependent variable was also analyzed using this method. Results were similar, indicating that VMM is a predictor (\(\beta\) = -0.21, t87= -3.10, p\textless{} 0.001) for reading. The authors conducted another regression analysis between writing and VMM and found that VMM did not interact with writing. Lastly, to determine if a variable carries the effect of an independent variable to the dependent variables the sobel test was completed and confirmed that the effect of VMM on reading via writing was significant (z= -3.39, p\textless0.001).
+
+
+\end{document}

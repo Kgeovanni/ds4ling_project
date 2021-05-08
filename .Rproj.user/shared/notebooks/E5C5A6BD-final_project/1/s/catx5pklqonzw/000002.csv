@@ -1,0 +1,62 @@
+"0","library(tidyverse)"
+"2","Registered S3 methods overwritten by 'dbplyr':
+  method         from
+  print.tbl_lazy     
+  print.tbl_sql      
+"
+"2","[37m── [1mAttaching packages[22m ─────────────────────────────────────────────────── tidyverse 1.3.0 ──[39m
+"
+"2","[37m[32m✓[37m [34mggplot2[37m 3.3.3     [32m✓[37m [34mpurrr  [37m 0.3.4
+[32m✓[37m [34mtibble [37m 3.1.0     [32m✓[37m [34mdplyr  [37m 1.0.5
+[32m✓[37m [34mtidyr  [37m 1.1.3     [32m✓[37m [34mstringr[37m 1.4.0
+[32m✓[37m [34mreadr  [37m 1.4.0     [32m✓[37m [34mforcats[37m 0.5.1[39m
+"
+"2","[37m── [1mConflicts[22m ────────────────────────────────────────────────────── tidyverse_conflicts() ──
+[31mx[37m [34mdplyr[37m::[32mfilter()[37m masks [34mstats[37m::filter()
+[31mx[37m [34mdplyr[37m::[32mlag()[37m    masks [34mstats[37m::lag()[39m
+"
+"0","library(lme4)"
+"2","Loading required package: Matrix
+"
+"2","
+Attaching package: ‘Matrix’
+
+"
+"2","The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+"
+"0","library(knitr)"
+"0","library(kableExtra)"
+"2","
+Attaching package: ‘kableExtra’
+
+"
+"2","The following object is masked from ‘package:dplyr’:
+
+    group_rows
+
+"
+"0","library(patchwork)"
+"0","library(dplyr)"
+"0","library(lme4)"
+"0",""
+"0","library(readr)"
+"0","data_raw <- read_csv(""data_raw/data_raw.csv"")"
+"2","
+[36m──[39m [1m[1mColumn specification[1m[22m [36m────────────────────────────────────────────────────────────────────[39m
+cols(
+  .default = col_double(),
+  ID = [31mcol_character()[39m,
+  Hand = [31mcol_character()[39m,
+  Sex = [31mcol_character()[39m,
+  Date_of_test = [31mcol_character()[39m,
+  Age_Cat = [31mcol_character()[39m,
+  Reading_Level = [31mcol_character()[39m,
+  Writing_Level = [31mcol_character()[39m
+)
+[36mℹ[39m Use [38;5;251m[48;5;235m[38;5;251m[48;5;235m`spec()`[48;5;235m[38;5;251m[49m[39m for the full column specifications.
+
+"
+"0","View(data_raw)"

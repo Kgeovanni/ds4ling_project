@@ -1,0 +1,6 @@
+"0","data_tidy %>% "
+"0","  ggplot(data_tidy, aes(Age_Cat, OE_avg_simple, color)) +"
+"0","  geom_point()"
+"2","Error: Mapping should be created with `aes()` or `aes_()`.
+[90mRun `rlang::last_error()` to see where the error occurred.[39m
+"

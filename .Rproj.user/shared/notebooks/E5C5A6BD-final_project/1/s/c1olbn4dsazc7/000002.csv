@@ -1,0 +1,4 @@
+"0","data_longer %>% "
+"0","  ggplot(aes(x = shape, y = OE)) +"
+"0","  geom_boxplot() +"
+"0","  facet_wrap(vars(Sex))"

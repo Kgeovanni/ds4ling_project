@@ -1,0 +1,5 @@
+
+library("tinytex")
+install_tinytex()
+library("papaja")
+devtools::install_github("crsh/papaja")
